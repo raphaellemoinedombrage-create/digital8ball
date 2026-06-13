@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bally</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
-body {
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background: #3759bd;
   color: white;
+  font-family: Arial, sans-serif;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .answer {
-  margin-top: 100px;
-  font-size: 24px;
   text-align: center;
-  width: 90%;
-  max-width: 500px;
+  font-size: 30px;
+  margin-top: 100px;
+  padding: 20px;
 }
 
 .input-box {
   position: fixed;
   bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px;
+  right: 20px;
   display: flex;
-  width: 90%;
-  max-width: 500px;
   background: #40414f;
   border-radius: 20px;
-  padding: 6px;
-  box-sizing: border-box;
+  padding: 8px;
 }
 
 input {
@@ -45,33 +43,25 @@ input {
   outline: none;
   background: transparent;
   color: white;
+  font-size: 18px;
   padding: 12px;
-  font-size: 16px;
-}
-
-input::placeholder {
-  color: #aaa;
 }
 
 button {
   border: none;
-  border-radius: 15px;
   background: #19c37d;
   color: white;
-  padding: 12px 18px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #15a96b;
+  border-radius: 15px;
+  padding: 12px 20px;
+  font-size: 18px;
 }
 </style>
 </head>
-
 <body>
 
-<div class="answer" id="answer">Ask Bally a question</div>
+<div class="answer" id="answer">
+  Ask Bally a question
+</div>
 
 <div class="input-box">
   <input id="text" placeholder="Type your question...">
@@ -79,7 +69,7 @@ button:hover {
 </div>
 
 <script>
-let hackclubistuff = [
+const hackclubistuff = [
   "it is certain",
   "it is decidedly so",
   "without a doubt",
@@ -103,13 +93,12 @@ let hackclubistuff = [
 ];
 
 function ask() {
-  let input = document.getElementById("text");
+  const input = document.getElementById("text");
 
   if (!input.value.trim()) return;
 
-  let r = hackclubistuff[Math.floor(Math.random() * hackclubistuff.length)];
-
-  document.getElementById("answer").textContent = r;
+  document.getElementById("answer").textContent =
+    hackclubistuff[Math.floor(Math.random() * hackclubistuff.length)];
 
   input.value = "";
 }
