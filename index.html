@@ -3,6 +3,8 @@
 <head>
 <title>Bally</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
   margin: 0;
@@ -16,21 +18,23 @@ body {
 }
 
 .answer {
-  margin-top: 120px;
-  font-size: 20px;
+  margin-top: 100px;
+  font-size: 24px;
   text-align: center;
   width: 90%;
   max-width: 500px;
 }
 
 .input-box {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   background: #40414f;
   border-radius: 20px;
-  margin-top: auto;
-  margin-bottom: 40px;
   padding: 6px;
   box-sizing: border-box;
 }
@@ -45,29 +49,22 @@ input {
   font-size: 16px;
 }
 
+input::placeholder {
+  color: #aaa;
+}
+
 button {
   border: none;
   border-radius: 15px;
   background: #19c37d;
   color: white;
-  padding: 10px 18px;
+  padding: 12px 18px;
   font-size: 16px;
   cursor: pointer;
 }
 
-@media (max-width: 480px) {
-  .answer {
-    font-size: 18px;
-    margin-top: 80px;
-  }
-
-  input {
-    padding: 10px;
-  }
-
-  button {
-    padding: 10px 14px;
-  }
+button:hover {
+  background: #15a96b;
 }
 </style>
 </head>
@@ -82,8 +79,6 @@ button {
 </div>
 
 <script>
-
-
 let hackclubistuff = [
   "it is certain",
   "it is decidedly so",
@@ -107,11 +102,11 @@ let hackclubistuff = [
   "very doubtful"
 ];
 
-function ask(){
+function ask() {
   let input = document.getElementById("text");
-  if(!input.value.trim()) return;
 
-  // same logic as Python random.choice()
+  if (!input.value.trim()) return;
+
   let r = hackclubistuff[Math.floor(Math.random() * hackclubistuff.length)];
 
   document.getElementById("answer").textContent = r;
